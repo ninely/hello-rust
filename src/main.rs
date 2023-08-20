@@ -1,12 +1,13 @@
-use ferris_says::say; // from the previous step
-use std::io::{stdout, BufWriter};
+use trait_demo::summary;
+use crate::trait_demo::summary::Summary;
+
+pub mod trait_demo;
 
 fn main() {
-    let stdout = stdout();
-    let message = String::from("Hello fellow Rustaceans!");
-    let width = message.chars().count();
+    let tweet = summary::Tweet {
+        username: "MyName".to_string(),
+        content: "This is a tweet content.".to_string(),
+    };
 
-    let mut writer = BufWriter::new(stdout.lock());
-    say(message.as_bytes(), width, &mut writer).unwrap();
+    println!("1 new tweet: {}", tweet.summarize());
 }
-
