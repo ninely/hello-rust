@@ -1,13 +1,10 @@
-use trait_demo::summary;
-use crate::trait_demo::summary::Summary;
-
-pub mod trait_demo;
+mod strings;
 
 fn main() {
-    let tweet = summary::Tweet {
-        username: "MyName".to_string(),
-        content: "This is a tweet content.".to_string(),
-    };
-
-    println!("1 new tweet: {}", tweet.summarize());
+    // string to vec<char>
+    let mut s = "hello".chars().collect::<Vec<char>>();
+    strings::reverse::Solution::reverse_string(&mut s);
+    // vec<char> to string
+    let s = s.into_iter().collect::<String>();
+    println!("{}", s);
 }
